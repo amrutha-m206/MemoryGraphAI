@@ -1,0 +1,16 @@
+Title: Transformer Models for Text Classification
+
+Transformer models, such as BERT, RoBERTa, and DistilBERT, have revolutionized natural language processing tasks. 
+They rely on self-attention mechanisms to capture contextual dependencies between words in a sequence. 
+Transformers have been successfully applied to text classification, sentiment analysis, and named entity recognition.
+
+BERT (Bidirectional Encoder Representations from Transformers) pre-trains on large corpora using masked language modeling and next sentence prediction. 
+RoBERTa improves BERT by training on more data with longer sequences and removing next sentence prediction. 
+DistilBERT provides a lighter, faster alternative by using knowledge distillation while retaining most of BERT’s performance.
+
+Text classification performance is measured using metrics such as accuracy, F1-score, and precision/recall. 
+Experiments on the IMDb movie reviews dataset show that RoBERTa achieves 94% accuracy, 
+while DistilBERT reaches 92% with significantly lower computational cost. 
+These models demonstrate the power of deep contextual embeddings for understanding textual data.
+
+Overall, Transformer-based models combine attention mechanisms and pre-training strategies to achieve state-of-the-art results in text classification.
