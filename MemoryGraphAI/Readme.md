@@ -1,4 +1,4 @@
-# MemoryGraph AI: Intelligent Graph-Based Research Assistant
+# MemoryGraph AI: A Dynamic, Context-Aware Hybrid Knowledge Graph Framework for Documents with Comparative Vector Database Analysis
 
 **MemoryGraph AI** is an advanced AI system that transcends traditional Vector-based RAG (Retrieval-Augmented Generation) by building a **Structured Knowledge Graph** from unstructured documents (PDFs, Text, Notes). 
 
