@@ -1,0 +1,11 @@
+PyPDF2
+python-docx
+nltk
+tqdm
+langchain
+langchain-core
+langchain-text-splitters
+tiktoken
+numpy==1.26.4
+h5py
+spacy
