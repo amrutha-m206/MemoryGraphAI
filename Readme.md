@@ -1,8 +1,12 @@
 # MemoryGraph AI: A Dynamic, Context-Aware Hybrid Knowledge Graph Framework for Documents with Comparative Vector Database Analysis
 
-**MemoryGraph AI** is an advanced AI system that transcends traditional Vector-based RAG (Retrieval-Augmented Generation) by building a **Structured Knowledge Graph** from unstructured documents (PDFs, Text, Notes). 
+**MemoryGraph AI** is an advanced AI system that transcends traditional **Vector-based RAG (Retrieval-Augmented Generation)** by building a **Structured Knowledge Graph** from unstructured documents such as PDFs, research papers, and text notes.
 
-While standard AI assistants search for text snippets, MemoryGraph AI builds an "Associative Memory" using **Neo4j**, enabling the AI to perform **multi-hop reasoning**—connecting ideas across different pages or even different documents.
+Instead of retrieving isolated text snippets like conventional AI assistants, MemoryGraph AI constructs a **persistent associative memory** using **Neo4j**, allowing the system to reason across connected concepts.
+
+By representing information as **entities (nodes) and relationships (edges)**, the system enables **multi-hop reasoning**, allowing the AI to connect ideas that may appear in different sections of a document or even across multiple documents.
+
+To further validate the effectiveness of this approach, the project includes a **comparative evaluation framework** that measures the performance of **graph-based retrieval against traditional vector similarity search**.
 
 ---
 
@@ -12,6 +16,21 @@ While standard AI assistants search for text snippets, MemoryGraph AI builds an 
 - **Semantic Vector Indexing:** Uses mathematical embeddings to find concepts even if the wording is different.
 - **Reasoning Engine:** Traverses the graph to answer complex questions that require "connecting the dots."
 - **Performance Analytics:** Real-time tracking of ingestion latency, extraction speed, and answer accuracy.
+- **Comparative Retrieval Analysis:** Includes a dedicated module that evaluates the effectiveness of **graph-based reasoning versus vector-based retrieval**, highlighting the strengths and limitations of both approaches.
+
+---
+## System Overview
+
+MemoryGraph AI mimics how humans organize knowledge — not as isolated pieces of information, but as a **network of interconnected ideas**.
+
+Instead of relying solely on embeddings, the system constructs a **knowledge graph memory layer**, enabling:
+
+- Context-aware information retrieval
+- Relationship-driven reasoning
+- Explainable AI outputs supported by graph evidence
+
+To validate the effectiveness of this architecture, the system incorporates **evaluation modules that measure retrieval performance across different retrieval paradigms**.
+
 
 ---
 
@@ -26,13 +45,88 @@ The system operates in a 6-phase pipeline:
 6. **UI Layer (Streamlit):** A professional dashboard for document management and interactive discovery.
 
 ---
+## Comparative Retrieval Analysis
+
+A key component of this project is the **comparative evaluation between graph-based retrieval and vector-based retrieval systems**.
+
+While vector databases rely on **embedding similarity**, graph-based retrieval leverages **explicit relationships between entities**.
+
+To analyze the effectiveness of both methods, the project includes evaluation pipelines that measure how well each approach retrieves relevant knowledge from documents.
+
+The comparison focuses on answering the following research question:
+
+**Does structured graph reasoning improve contextual retrieval compared to pure vector similarity search?**
+
+---
+
+## Evaluation Framework
+
+The evaluation module tests retrieval performance using **both graph-based and vector-based pipelines**.
+
+### Graph-Based Retrieval Evaluation
+
+This pipeline evaluates how effectively the system retrieves relevant entities using **knowledge graph relationships**.
+
+The approach analyzes:
+
+* Connected entities within the graph
+* Contextual relationships
+* Multi-hop reasoning accuracy
+
+---
+
+## Vector-Based Retrieval Evaluation
+
+This pipeline retrieves concepts using **embedding similarity and cosine distance**.
+
+The system identifies the closest concept to the query and retrieves related concepts based on semantic similarity.
+
+---
+
+## Evaluation Metrics
+
+To ensure a fair comparison, both retrieval approaches are evaluated using standard **Information Retrieval metrics**.
+
+### Precision
+
+Measures the proportion of retrieved entities that are relevant.
+
+### Recall
+
+Measures how many relevant entities were successfully retrieved.
+
+### F1 Score
+
+Balances precision and recall to provide an overall accuracy measure.
+
+### Mean Reciprocal Rank (MRR)
+
+Evaluates how early the correct answer appears in the ranking.
+
+### Coverage
+
+Measures how much of the relevant information space is captured.
+
+### Contextual Accuracy
+
+Assesses whether retrieved entities maintain meaningful relationships within the knowledge graph.
+
+### Query Latency
+
+Tracks the time required to process and return results.
+
+These metrics provide a **quantitative comparison between graph reasoning and vector similarity retrieval**.
+
+---
+
 
 ## Technology Stack
 - **LLM:** Groq (Llama-3.1-8b-instant)
 - **Database:** Neo4j AuraDB (Cloud)
-- **NLP/Embeddings:** LangChain, Sentence-Transformers (all-MiniLM-L6-v2)
+- **Embeddings:** Sentence-Transformers (all-MiniLM-L6-v2)
+- **Frameworks:** LangChain, NetworkX
 - **Frontend:** Streamlit
-- **Language:** Python 3.10+
+- **Programming Language:** Python 3.10+
 
 ---
 
@@ -96,13 +190,41 @@ The app includes a built-in **Performance & Accuracy Dashboard** that tracks:
 
 ---
 
-## Project Structure
+## Project Structure [MemoryGraphAI]
 - `app.py`: The main Streamlit interface and orchestration logic.
 - `ingestion.py`: PDF parsing and text cleaning.
 - `extraction.py`: LLM-based entity and relationship extraction.
 - `graph_builder.py`: Neo4j connection and Cypher query execution.
 - `graph_embeddings.py`: Vector generation and indexing.
 - `query_engine.py`: The GraphRAG reasoning and answering logic.
+
+---
+## Project Structure [Comparision_Analysis]
+- `generate_nodes_edges.py`: Extracts entities and relationships using an LLM.
+- `hybrid_approach_evaluation_meterics.py`: Evaluates the graph-based retrieval approach.
+- `vector_pipeline_evaluation_metrics.py`: Evaluates the vector-based retrieval approach.
+- `doc.txt`: Input document for extraction.
+- `output.json`: Generated nodes and edges in JSON format.
+  
+---
+# Performance Insights
+
+The integrated analytics module measures:
+
+* Document ingestion latency
+* LLM extraction speed
+* Graph density
+* Retrieval accuracy
+* Query response time
+
+These metrics provide insights into **system scalability and retrieval efficiency**.
+
+---
+# Conclusion
+
+MemoryGraph AI demonstrates how combining **knowledge graphs, semantic embeddings, and LLM reasoning** can create a more **context-aware and explainable AI retrieval system**.
+
+By integrating **graph reasoning with vector search and evaluating both approaches**, the system provides insights into how future AI memory architectures can move beyond traditional retrieval systems toward **structured knowledge-based intelligence**.
 
 ---
 
