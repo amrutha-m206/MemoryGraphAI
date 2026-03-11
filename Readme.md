@@ -139,7 +139,7 @@ Before running the app, you need:
 
 ---
 
-## Installation
+## Installation [MemoryGraphAI]
 
 1. **Clone the project folder and navigate into it:**
    ```bash
@@ -178,6 +178,65 @@ The entire system is integrated into a single Streamlit dashboard. You do not ne
    - **Step 3 (Main Screen):** Once the "Graph Ready" message appears, type your question in the search bar.
    - **Step 4 (Evaluation):** Review the **AI Answer** side-by-side with the **Graph Evidence** to ensure the answer is grounded in facts.
 
+---
+
+## Installation [Comparision_Analysis]
+
+1. Navigate to the comparison analysis directory:
+   ```bash
+   cd Comparison_Analysis
+   ```
+2. Install the required dependencies:
+   ```bash
+   pip install requests networkx sentence-transformers numpy
+   ```
+3. Add your Groq API key inside `generate_nodes_edges.py`:
+   ```bash
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+---
+
+## How to Run
+
+The comparison analysis consists of three sequential steps.
+
+### Step 1: Generate Nodes and Edges
+
+Extract entities and relationships from the document and create the knowledge graph JSON file.
+   ```bash
+   python generate_nodes_edges.py
+   ```
+
+This script reads `doc.txt` and generates `output.json` containing the extracted nodes and edges.
+
+
+### Step 2: Run Graph-Based Evaluation
+
+Evaluate the retrieval performance using the graph-based approach.
+   ```bash
+   python hybrid_approach_evaluation_meterics.py
+   ```
+
+
+### Step 3: Run Vector-Based Evaluation
+
+Evaluate the retrieval performance using vector similarity search.
+   ```bash
+   python vector_pipeline_evaluation_metrics.py
+   ```
+
+### OUTPUT
+
+Both evaluation scripts will display retrieval metrics such as:
+
+- Precision  
+- Recall  
+- F1 Score  
+- Mean Reciprocal Rank (MRR)  
+- Coverage  
+- Contextual Accuracy  
+- Query Latency
+  
 ---
 
 ## Evaluation & Metrics
