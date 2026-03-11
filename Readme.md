@@ -139,7 +139,7 @@ Before running the app, you need:
 
 ---
 
-## Installation [MemoryGraphAI]
+## Installation [MemoryGraphAI Platform]
 
 1. **Clone the project folder and navigate into it:**
    ```bash
@@ -223,20 +223,7 @@ Evaluate the retrieval performance using the graph-based approach.
 Evaluate the retrieval performance using vector similarity search.
    ```bash
    python vector_pipeline_evaluation_metrics.py
-   ```
-
-### OUTPUT
-
-Both evaluation scripts will display retrieval metrics such as:
-
-- Precision  
-- Recall  
-- F1 Score  
-- Mean Reciprocal Rank (MRR)  
-- Coverage  
-- Contextual Accuracy  
-- Query Latency
-  
+   ```  
 ---
 
 ## Evaluation & Metrics
@@ -249,7 +236,7 @@ The app includes a built-in **Performance & Accuracy Dashboard** that tracks:
 
 ---
 
-## Project Structure [MemoryGraphAI]
+## Project Structure [MemoryGraphAI Platform]
 - `app.py`: The main Streamlit interface and orchestration logic.
 - `ingestion.py`: PDF parsing and text cleaning.
 - `extraction.py`: LLM-based entity and relationship extraction.
