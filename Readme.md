@@ -99,10 +99,6 @@ Measures how many relevant entities were successfully retrieved.
 
 Balances precision and recall to provide an overall accuracy measure.
 
-### Mean Reciprocal Rank (MRR)
-
-Evaluates how early the correct answer appears in the ranking.
-
 ### Coverage
 
 Measures how much of the relevant information space is captured.
