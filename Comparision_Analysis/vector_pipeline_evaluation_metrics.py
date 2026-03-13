@@ -67,7 +67,6 @@ retrieved_hits = [e for e in retrieved_entities if e in relevant_entities]
 precision = len(retrieved_hits) / len(retrieved_entities)
 recall = len(retrieved_hits) / len(relevant_entities)
 f1 = 2 * precision * recall / (precision + recall + 1e-8)
-coverage = len(retrieved_hits) / len(relevant_entities)
 
 query_context = "model"
 context_hits = sum(1 for e in retrieved_hits if context_groups.get(e) == query_context)
@@ -80,6 +79,6 @@ print("Relevant Hits:", retrieved_hits)
 print(f"Precision: {precision:.2f}")
 print(f"Recall: {recall:.2f}")
 print(f"F1 Score: {f1:.2f}")
-print(f"Coverage: {coverage:.2f}")
 print(f"Contextual Accuracy: {contextual_accuracy:.2f}")
 print(f"Query Latency: {latency:.4f} seconds")
+
