@@ -17,7 +17,7 @@ class GraphQueryEngine:
         # 2. Load the Embedding Model
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         
-        # 3. Initialize LLM (Using 8b-instant for higher rate limits and speed)
+        # 3. Initialize LLM (8b-instant for speed and limits)
         self.llm = ChatGroq(
             temperature=0,
             model_name="llama-3.1-8b-instant",
@@ -28,28 +28,24 @@ class GraphQueryEngine:
         self.driver.close()
 
     def search_graph(self, user_query: str, top_k=5):
-        """Finds relevant nodes and their neighbors in the graph using bi-directional search."""
+        """Finds relevant relationships for text-based context."""
         query_embedding = self.model.encode(user_query).tolist()
-        
-        # IMPROVED CYPHER: Looks for relationships in BOTH directions
         search_query = """
         CALL db.index.vector.queryNodes('entity_embeddings', $k, $embedding)
         YIELD node, score
         OPTIONAL MATCH (node)-[r]-(neighbor)
-        RETURN node.name AS source, type(r) AS relationship, neighbor.name AS target, score
+        RETURN node.name AS source, type(r) AS relationship, neighbor.name AS target
         LIMIT 15
         """
-        
         context_parts = []
         with self.driver.session() as session:
             result = session.run(search_query, k=top_k, embedding=query_embedding)
             for record in result:
                 if record['relationship']: 
-                    context_parts.append(
-                        f"({record['source']}) -[{record['relationship']}]-> ({record['target']})"
-                    )
+                    context_parts.append(f"({record['source']}) -[{record['relationship']}]-> ({record['target']})")
                 else: 
                     context_parts.append(f"Entity found: {record['source']}")
+        return "\n".join(list(set(context_parts)))
 
     def get_visualization_data(self, user_query: str, top_k=5):
         """Fetches nodes and edges specifically for the visual graph."""
@@ -99,62 +95,16 @@ class GraphQueryEngine:
             for record in comm_result:
                 communities.append({"Cluster": record["pair"], "Strength": record["strength"]})
         return hubs, communities
-        
-        
-        return "\n".join(list(set(context_parts)))
 
     def answer_question(self, question: str):
-        """Generalized answering engine for any document type."""
-        print(f"\nThinking about: {question}...")
-        
-        # 1. Retrieve Graph Evidence
+        """Generates a direct answer based on the knowledge graph."""
         graph_context = self.search_graph(question)
-        
-        # SAFETY CHECK: If no graph data is found at all
         if not graph_context.strip():
-            return "I couldn't find any specific information in the documents to answer that accurately."
+            return "No specific information found in the memory graph."
 
-        # 2. Generalized Intelligence Prompt (No longer restricted to research)
-        prompt = f"""
-        You are MemoryGraph AI, a sophisticated knowledge assistant. 
-        Your task is to provide a clear and direct answer to the user's question using the provided context.
-
-        Guidelines:
-        - Use the Knowledge Graph Context below as your only source of facts.
-        - Be direct. If the context contains the answer, state it clearly.
-        - If the context doesn't contain a direct answer but has related information, explain those relationships.
-        - Use bullet points for multiple facts.
-        - Do NOT use academic headers like 'Research Summary', 'Hypothesis', or 'Future Directions' unless specifically asked.
-        - Avoid making up connections that don't exist in the context.
-
-        Knowledge Graph Context (Evidence):
-        {graph_context}
-
-        User Question: {question}
-
-        Final Answer:
-        """
-        
+        prompt = f"Context: {graph_context}\n\nQuestion: {question}\n\nAnswer directly:"
         try:
             response = self.llm.invoke(prompt)
             return response.content
         except Exception as e:
-            if "429" in str(e):
-                return "⚠️ Groq API Rate Limit Reached. Please wait a moment."
-            return f"An error occurred: {str(e)}"
-
-# --- TEST INTERFACE ---
-if __name__ == "__main__":
-    engine = GraphQueryEngine()
-    print("--- MemoryGraph AI Query Engine ---")
-    print("Type 'exit' to quit.")
-    
-    while True:
-        user_input = input("\nAsk a question: ")
-        if user_input.lower() == 'exit':
-            break
-            
-        answer = engine.answer_question(user_input)
-        print(f"\nAI Answer:\n{answer}")
-        
-    engine.close()
+            return f"Error: {str(e)}"
