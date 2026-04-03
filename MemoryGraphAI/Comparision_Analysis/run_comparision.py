@@ -45,59 +45,90 @@ from evaluation_metrics import compute_all_metrics
 # ─────────────────────────────────────────────────────────────────────────────
 
 EVAL_QUERIES = [
+
     {
-        "query": "What methods are used for node classification?",
+        "query": "How does the inductive setting differ from the transductive setting in GNN models and what impact does it have on real-world applications like protein-protein interaction networks?",
         "relevant_entities": {
-            "Graph Neural Networks", "Node Classification",
-            "Gcn", "Graph Convolutional Network"
+            "Inductive Setting",
+            "Transductive Setting",
+            "Gnn Models",
+            "Protein-Protein Interaction Networks"
         },
-        "ground_truth": (
-            "Graph Neural Networks (GNNs), including GCN and GraphSAGE, "
-            "are the primary methods used for node classification tasks."
-        ),
+        "ground_truth": "The inductive setting generalizes to unseen data while the transductive setting uses the full graph during training, impacting how models are applied in real-world domains like protein interaction networks."
     },
+
     {
-        "query": "Which datasets are used to evaluate graph learning models?",
+        "query": "How do graph attention models help mitigate the over-smoothing problem in graph neural networks?",
         "relevant_entities": {
-            "Cora Dataset", "Citeseer", "Pubmed", "Ogbn-Arxiv"
+            "Graph Attention Models",
+            "Over-Smoothing Problem",
+            "Gnn Models"
         },
-        "ground_truth": (
-            "Common benchmark datasets include Cora, Citeseer, PubMed, "
-            "and OGB datasets like ogbn-arxiv."
-        ),
+        "ground_truth": "Graph attention models assign different importance to neighbors, helping preserve node distinctions and mitigate over-smoothing in graph neural networks."
     },
+
     {
-        "query": "What are the key evaluation metrics for graph models?",
+        "query": "How are adversarial learning methods used to address graph data attack and defense challenges in GNNs?",
         "relevant_entities": {
-            "Accuracy", "F1 Score", "Auc-Roc", "Mean Reciprocal Rank"
+            "Adversarial Learning Methods",
+            "Graph Data Attack And Defense",
+            "Gnn Models"
         },
-        "ground_truth": (
-            "Accuracy, F1 score, AUC-ROC, and Mean Reciprocal Rank are "
-            "common metrics used to evaluate graph learning models."
-        ),
+        "ground_truth": "Adversarial learning methods are used to improve robustness of GNNs against attacks by training models to handle perturbed graph data."
     },
+
     {
-        "query": "How is attention mechanism applied in graph networks?",
+        "query": "What role do recurrent graph neural networks play compared to standard GNN models and in which scenarios are they useful?",
         "relevant_entities": {
-            "Graph Attention Network", "Gat", "Attention Mechanism",
-            "Self-Attention"
+            "Recurrent Graph Neural Networks",
+            "Graph Recurrent Network (Grn)",
+            "Gnn Models",
+            "Non-Structural Scenarios"
         },
-        "ground_truth": (
-            "Graph Attention Networks (GAT) apply self-attention to assign "
-            "learnable weights to neighbouring nodes during aggregation."
-        ),
+        "ground_truth": "Recurrent graph neural networks introduce temporal dynamics and iterative updates, making them useful in dynamic or non-structural scenarios compared to standard GNNs."
     },
+
     {
-        "query": "What techniques are used for link prediction?",
+        "query": "How is cross-entropy loss used in supervised settings for training GNN models and evaluated during the test phase?",
         "relevant_entities": {
-            "Link Prediction", "Knowledge Graph Embedding",
-            "TransE", "Graph Autoencoder"
+            "Cross-Entropy Loss",
+            "Supervised Setting",
+            "Test Phase",
+            "Gnn Models"
         },
-        "ground_truth": (
-            "Link prediction uses knowledge graph embeddings such as TransE, "
-            "and structural methods like Graph Autoencoders."
-        ),
+        "ground_truth": "Cross-entropy loss is used in supervised settings to train GNNs by minimizing classification error, and model performance is evaluated during the test phase."
     },
+
+    {
+        "query": "How do mathematical operations like element-wise multiplication relate to modeling GNNs using ordinary differential equation systems?",
+        "relevant_entities": {
+            "Element-Wise Multiplication Operation",
+            "Ordinary Differential Equation Systems (Odes)",
+            "Gnn Models"
+        },
+        "ground_truth": "GNNs can be expressed using mathematical operations like element-wise multiplication and modeled as continuous systems using ordinary differential equations."
+    },
+
+    {
+        "query": "How are datasets like the Cora dataset used to evaluate edge classification tasks in graph neural networks?",
+        "relevant_entities": {
+            "Cora Dataset",
+            "Edge Classification",
+            "Gnn Models"
+        },
+        "ground_truth": "Datasets like Cora are used to evaluate tasks such as edge classification and node classification in graph neural networks."
+    },
+
+    {
+        "query": "How do graph neural networks connect applications in social science and protein-protein interaction networks through shared modeling principles?",
+        "relevant_entities": {
+            "Social Science",
+            "Protein-Protein Interaction Networks",
+            "Gnn Models"
+        },
+        "ground_truth": "GNNs apply the same graph-based modeling principles across domains like social science and biological networks by capturing relationships between entities."
+    }
+
 ]
 
 K = 5   # Retrieval cut-off rank
