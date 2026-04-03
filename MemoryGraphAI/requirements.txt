@@ -10,3 +10,11 @@ numpy==1.26.4
 h5py
 spacy
 streamlit
+plotly
+neo4j
+sentence-transformers 
+langchain-groq 
+python-dotenv 
+streamlit-agraph
+torch --index-url https://download.pytorch.org/whl/cpu
+torchvision --index-url https://download.pytorch.org/whl/cpu
