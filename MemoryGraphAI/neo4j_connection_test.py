@@ -18,9 +18,8 @@
 from neo4j import GraphDatabase
 
 driver = GraphDatabase.driver(
-    "bolt://170d5454.databases.neo4j.io:7687",
-    auth=("neo4j", "Zsy0STAu9DAN7zzWYeUETmF1VwD-hFUK5utP4O_OjNU"),
-    encrypted=False    
+    "neo4j+s://170d5454.databases.neo4j.io:7687",
+    auth=("170d5454", "Zsy0STAu9DAN7zzWYeUETmF1VwD-hFUK5utP4O_OjNU")    
 )
 
 with driver.session() as session:
