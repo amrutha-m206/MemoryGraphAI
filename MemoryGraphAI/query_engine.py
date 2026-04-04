@@ -13,10 +13,10 @@ class GraphQueryEngine:
         user = os.getenv("NEO4J_USERNAME")
         password = os.getenv("NEO4J_PASSWORD")
         self.driver = GraphDatabase.driver(uri, auth=(user, password))
-        
+
         # 2. Load the Embedding Model
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
-        
+
         # 3. Initialize LLM (8b-instant for speed and limits)
         self.llm = ChatGroq(
             temperature=0,
@@ -102,7 +102,29 @@ class GraphQueryEngine:
         if not graph_context.strip():
             return "No specific information found in the memory graph."
 
-        prompt = f"Context: {graph_context}\n\nQuestion: {question}\n\nAnswer directly:"
+        prompt = f"""
+        You are a Knowledge Graph Question Answering system.
+
+        Strict Instructions:
+        1. Answer the question using ONLY the concepts present in the Graph Context.
+        2. Do NOT infer, guess, or assume relationships that are not explicitly present.
+        4. If the answer cannot be derived from the Graph Context, reply exactly:
+        "The answer is not present in the knowledge graph."
+        5. Provide a clear and structured explanation using multiple sentences.
+        6. If definitions or descriptions appear in the Graph Context, include them in the answer.
+        7. Do NOT say phrases like "we can infer", "it suggests", or "it is likely".
+        8. Explain concepts clearly instead of repeating the same relationship.
+        - Also please suggest follow up questions 1 or 2 which are relevant not just how this is related and stuff.
+        9. Do not mention the relationship the arrow and stuff in the answer , please add some of your knowledge to it and make it structured
+
+        Graph Context:
+        {graph_context}
+
+        Question:
+        {question}
+
+        Answer based ONLY on the graph context:
+        """
         try:
             response = self.llm.invoke(prompt)
             return response.content
