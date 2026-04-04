@@ -120,10 +120,14 @@ with st.sidebar:
 
 
 # ---------------- MAIN TABS ----------------
-tab1, tab2, tab3 = st.tabs(
-    ["🔍 Search & Reasoning", "📊 Knowledge Discovery", "📊 Performance Metrics"]
+tab1, tab2, tab3, tab4 = st.tabs(
+    [
+        "🔍 Search & Reasoning",
+        "📊 Knowledge Discovery",
+        "📊 Performance Metrics",
+        "📄Graph Evidence",
+    ]
 )
-
 
 
 # ------------------------------------------------
@@ -176,7 +180,7 @@ with tab2:
     # -------- Graph Data Science Insights --------
     with subtab1:
 
-        st.header("📈 Graph Data Science Insights")
+        st.header(" Graph Insights")
 
         st.write("Analyze the global structure of your Knowledge Graph.")
 
@@ -199,7 +203,7 @@ with tab2:
     # -------- Graph Visualization --------
     with subtab2:
 
-        st.subheader("🌐 Graph Visualization")
+        st.subheader(" Graph Visualization")
 
         if st.session_state.last_nodes:
 
@@ -242,3 +246,34 @@ with tab3:
 
     else:
         st.info("No pipeline runs recorded yet.")
+
+
+# --- TAB 4 : Graph Evidence ---
+with tab4:
+    st.subheader("📄 Graph Evidence for Last Query")
+
+    if st.session_state.chat_history:
+        # Find the last user query
+        last_user_query = next(
+            (
+                m["content"]
+                for m in reversed(st.session_state.chat_history)
+                if m["role"] == "user"
+            ),
+            None,
+        )
+
+        if last_user_query:
+            # Get textual evidence from your query engine
+            evidence = tools["query_engine"].search_graph(last_user_query)
+
+            if evidence:
+                st.code(evidence)
+            else:
+                st.info("No evidence found for the last query.")
+        else:
+            st.info("No user query found in chat history.")
+    else:
+        st.info(
+            "Ask a question in the Search & Reasoning tab to generate graph evidence."
+        )
