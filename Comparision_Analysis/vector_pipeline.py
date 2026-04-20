@@ -17,64 +17,6 @@ Any metric advantage for Graph RAG is therefore attributable SOLELY to
 the graph traversal and relational context — not embedding quality or model choice.
 """
 
-# import numpy as np
-# from knowledge_graph import get_graph
-# from embedder import TFIDFEmbedder
-
-
-# class VectorRAGPipeline:
-#     def __init__(self, embedder: TFIDFEmbedder, top_k: int = 5):
-#         self.graph = get_graph()
-#         self.embedder = embedder
-#         self.top_k = top_k
-
-#         entity_names = list(self.graph["entities"].keys())
-#         corpus = [f"{n} {self.graph['entities'][n]}" for n in entity_names]
-#         entity_matrix = embedder.embed_batch(corpus, name_boosts=entity_names)
-#         self._entity_names = entity_names
-#         self._entity_matrix = entity_matrix
-
-#     def search(self, query: str) -> tuple[list[str], list[float]]:
-#         """Returns (entity_names, scores) for top-k entities by cosine similarity."""
-#         q_vec = self.embedder.embed(query)
-#         scores = self._entity_matrix @ q_vec
-#         top_idx = np.argsort(scores)[::-1][: self.top_k]
-#         names = [self._entity_names[i] for i in top_idx]
-#         sims = [float(scores[i]) for i in top_idx]
-#         return names, sims
-
-#     def get_context_string(self, query: str) -> str:
-#         """
-#         Flat entity list — no relationship information.
-#         The LLM receives only entity names and their descriptions.
-#         No structural connections are provided.
-#         """
-#         names, scores = self.search(query)
-#         if not names:
-#             return ""
-#         lines = []
-#         for name, score in zip(names, scores):
-#             desc = self.graph["entities"].get(name, "")
-#             lines.append(f"Entity: {name} (relevance={score:.3f})\n  Description: {desc}")
-#         return "\n\n".join(lines)
-
-#     def answer_question(self, question: str, llm_fn) -> str:
-#         """Generate an answer using the flat entity context and the provided LLM function."""
-#         context = self.get_context_string(question)
-#         if not context.strip():
-#             return "No relevant information found via vector search."
-
-#         prompt = (
-#             "You are an expert research assistant. You have been given a list of "
-#             "relevant entities retrieved by semantic similarity search.\n\n"
-#             "Retrieved Entities:\n"
-#             f"{context}\n\n"
-#             "Using ONLY the entities listed above, answer the following question.\n\n"
-#             f"Question: {question}\n\n"
-#             "Answer:"
-#         )
-#         return llm_fn(prompt)
-
 import numpy as np
 from knowledge_graph import get_graph
 from embedder import TFIDFEmbedder
