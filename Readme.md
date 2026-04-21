@@ -276,7 +276,7 @@ These metrics provide insights into **system scalability and retrieval efficienc
 
 <img width="1600" height="675" alt="4" src="https://github.com/user-attachments/assets/8c95f19e-4625-4ef8-b33d-97a5ed0b36aa" />
 <p align="center"><b><i>Neo4j Graph Database Representation of Stored Knowledge</i></b></p>
-
+<br>
 
 ---
 # Conclusion
