@@ -261,22 +261,20 @@ These metrics provide insights into **system scalability and retrieval efficienc
 ---
 # Output Screenshots
 <img width="1600" height="664" alt="1" src="https://github.com/user-attachments/assets/3f321601-ca50-45be-95a4-4b1f5161fedb" />
-
 MemoryGraph AI User Interface for Document Upload and Querying
 
 
 
-<img width="694" height="385" alt="image" src="https://github.com/user-attachments/assets/150ee416-1a2c-4b25-b72b-21534a5a971a" />
+<img width="1498" height="828" alt="2" src="https://github.com/user-attachments/assets/875bc58a-9515-4bcb-838b-5059b0417871" />
 Knowledge Graph Insights and Entity Analysis
 
 
-
-<img width="807" height="396" alt="image" src="https://github.com/user-attachments/assets/a6987899-6e70-4d0a-9ea4-adc31883dcd8" />
+<img width="1201" height="591" alt="3" src="https://github.com/user-attachments/assets/409c3919-c0c7-4a8c-b557-dbc2391c5137" />
 Graph Evidence Supporting Generated Answers
 
 
 
-<img width="835" height="350" alt="image" src="https://github.com/user-attachments/assets/aee3f14e-0d89-4658-91a8-86d6c566c630" />
+<img width="1600" height="675" alt="4" src="https://github.com/user-attachments/assets/8c95f19e-4625-4ef8-b33d-97a5ed0b36aa" />
 Neo4j Graph Database Representation of Stored Knowledge
 
 
