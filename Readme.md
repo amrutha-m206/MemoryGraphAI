@@ -259,6 +259,21 @@ The integrated analytics module measures:
 These metrics provide insights into **system scalability and retrieval efficiency**.
 
 ---
+# Output Screenshots
+<img width="734" height="308" alt="image" src="https://github.com/user-attachments/assets/e46465b5-00b4-4890-ba42-ce813e49cbfe" />
+MemoryGraph AI User Interface for Document Upload and Querying
+
+<img width="694" height="385" alt="image" src="https://github.com/user-attachments/assets/150ee416-1a2c-4b25-b72b-21534a5a971a" />
+Knowledge Graph Insights and Entity Analysis
+
+<img width="807" height="396" alt="image" src="https://github.com/user-attachments/assets/a6987899-6e70-4d0a-9ea4-adc31883dcd8" />
+Graph Evidence Supporting Generated Answers
+
+<img width="835" height="350" alt="image" src="https://github.com/user-attachments/assets/aee3f14e-0d89-4658-91a8-86d6c566c630" />
+Neo4j Graph Database Representation of Stored Knowledge
+
+
+---
 # Conclusion
 
 MemoryGraph AI demonstrates how combining **knowledge graphs, semantic embeddings, and LLM reasoning** can create a more **context-aware and explainable AI retrieval system**.
