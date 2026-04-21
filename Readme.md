@@ -271,5 +271,4 @@ By integrating **graph reasoning with vector search and evaluating both approach
 - **Rate Limits:** This project uses the Groq Free Tier. If you process very large documents, you may hit the "Tokens Per Day" limit. If this happens, wait a few minutes or switch to the `llama-3.1-8b-instant` model for higher limits.
 - **Data Privacy:** Documents are processed locally and then stored in your private Neo4j cloud instance. No data is used to train public models.
 
----
-*Created as part of the MemoryGraph AI Research Initiative.*
+
