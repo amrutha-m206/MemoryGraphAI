@@ -260,7 +260,8 @@ These metrics provide insights into **system scalability and retrieval efficienc
 
 ---
 # Output Screenshots
-<img width="734" height="308" alt="image" src="https://github.com/user-attachments/assets/e46465b5-00b4-4890-ba42-ce813e49cbfe" />
+<img width="1600" height="664" alt="1" src="https://github.com/user-attachments/assets/3f321601-ca50-45be-95a4-4b1f5161fedb" />
+
 MemoryGraph AI User Interface for Document Upload and Querying
 
 
